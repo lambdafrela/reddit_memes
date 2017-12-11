@@ -1,52 +1,51 @@
-import re
 import os
-import requests
-import config
+import re
+from random import shuffle
 
-from praw import Reddit
-from vk import set_access_token, get_group
-from vk.photos import Photo
-from random import choice, shuffle
+import requests
 from apscheduler.schedulers.blocking import BlockingScheduler
+from praw import Reddit
+from vk import get_group, set_access_token
+from vk.photos import Photo
+
+import config
 
 sched = BlockingScheduler()
 
-set_access_token(config.VK_ACCESS_TOKEN)
-group = get_group(config.VK_GROUP)
+# прочитай про авторизацию приложений в ВК
+# и заполни сам
 
-reddit = Reddit('bot1')
+# авторизация в reddit
+reddit =
 hot_limit = 20
 
-pattern = re.compile(r"(jpe?g|png)|imgur")
-prefix = '#ithumor@lambdait'
+# придумай регулярку, фильтрующую изображения
+pattern = re.compile(r"??????")
 
-def download_attachment(attachment_url):
-	response = requests.get(attachment_url, stream=True)
-	return response.content
+prefix = '#ithumor@lambdait'
+hour = 16
+minute = 10
 
 
 def get_attachment(post):
-	binary_content = download_attachment(post.url)
-	_, filename = os.path.split(post.url)
-	yield (filename, binary_content)
+    """
+    Сотри pass и напиши нужный код ;)
+    """
+    pass
 
 
-@sched.scheduled_job('cron', day_of_week='mon-fri', hour=16, minute=10)
-def post_to_vk():
-	subreddit = reddit.subreddit('ProgrammerHumor')
-	hot = list(subreddit.hot(limit=hot_limit))
+# Разкомментируй эту функцию, когда будешь заливать на heroku
+# @sched.scheduled_job('cron', day_of_week='mon-fri', hour=hour, minute=minute)
+# def post_to_vk():
+#     pass
 
-	while len(hot) > 0:
-		shuffle(hot)
-		post = hot.pop()
+# sched.start()
 
-		if re.findall(pattern, post.url):
-			attachment_items = {filename: binary_content for filename, 
-				binary_content in get_attachment(post)}
-			photo_items = Photo.upload_wall_photos_for_group(int(config.VK_GROUP),
-				attachment_items.items())
-			group.wall_post(message=f'{prefix}\n\n{post.title}',
-				attachments=photo_items)
-			break
+if __name__ == "__main__":
+    # получи нужный сабреддит
+    subreddit =
 
-sched.start()
+    # собери топ постов
+    hot =
+
+    # придумай, что делать дальше :)
