@@ -31,7 +31,7 @@ def get_attachment(post):
 	yield (filename, binary_content)
 
 
-@sched.scheduled_job('cron', day_of_week='mon-fri', hour=15, minunte=30)
+@sched.scheduled_job('cron', day_of_week='mon-fri', hour=15, minute=35)
 def post_to_vk():
 	subreddit = reddit.subreddit('ProgrammerHumor')
 	hot = list(subreddit.hot(limit=hot_limit))
