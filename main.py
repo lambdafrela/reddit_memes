@@ -43,7 +43,7 @@ def post_to_vk():
 		if re.findall(pattern, post.url):
 			attachment_items = {filename: binary_content for filename, 
 				binary_content in get_attachment(post)}
-			photo_items = Photo.upload_wall_photos_for_group(int(VK_GROUP),
+			photo_items = Photo.upload_wall_photos_for_group(int(config.VK_GROUP),
 				attachment_items.items())
 			group.wall_post(message=f'{prefix}\n\n{post.title}',
 				attachments=photo_items)
