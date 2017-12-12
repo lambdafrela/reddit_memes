@@ -25,6 +25,7 @@ pip install -r requirements.txt
 ## авторизация в реддите + скачивание списка постов
 
 В проекте используем библиотеку `praw` . С документацией можно ознакомиться [тут](https://praw.readthedocs.io/en/latest/index.html), нам понадобится всего две-три команды.
+
 Нужно иметь аккаунт на [reddit.com](https://www.reddit.com/), в [настройках приложений](https://www.reddit.com/prefs/apps/) своего профиля создать новое приложение, записать:
 
   - название приложения `user_agent`
@@ -32,6 +33,7 @@ pip install -r requirements.txt
   - ID приложения `client_id`
 
 Или попросить существующие у @Timur M
+
 Все полученные ключи надо записать в файл `praw.ini`. Мы знаем, что хранить ключи в репозитории — в высшей степени плохо, поэтому особо ретивые могут запихать их в переменные окружения, если ознакомятся с [документацией](https://praw.readthedocs.io/en/latest/getting_started/configuration/environment_variables.html).
 
 ## авторизация в вк
